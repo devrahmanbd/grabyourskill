@@ -1,0 +1,32 @@
+name: Generate Matlab Image
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  generate_image:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+
+    - name: Install Dependencies
+      run: |
+        pip install matplotlib matplotlib-venn
+
+    - name: Generate Image
+      run: python search_engine_stat.py
+
+    - name: Save Image as Artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: output-artifact
+        path: search_engine_stat.png
