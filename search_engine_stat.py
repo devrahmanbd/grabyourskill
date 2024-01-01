@@ -1,14 +1,11 @@
-import numpy as np
+import subprocess
+
+
+subprocess.run(['pip', 'install','matplotlib', 'matplotlib-venn'])
+
+
 import matplotlib.pyplot as plt
 from matplotlib_venn import venn2
-
-
-try:
-    from matplotlib_venn import venn2
-except ModuleNotFoundError:
-    !pip install matplotlib-venn
-    from matplotlib_venn import venn2
-
 
 data_pie = [91.54, 3.2, 1.78, 1.22, 0.93, 0.55]
 labels_pie = ["Google", "Bing", "Yandex", "Yahoo!", "Baidu", "DuckDuckGo"]
